@@ -1,0 +1,16 @@
+{
+    "name": "mtm/persian_date",
+    "description": "Persian date time to work with.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Amin Alizade",
+            "email": "motammem@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "psr-4": {
+        "Mtm\\": "src/"
+    }
+    
+}
