@@ -1,14 +1,27 @@
 <?php
 
-/**
- * Class PersianDate
+/*
+ * This file is part of the Mtm packages.
+ *
+ * (c) Amin Alizade <motammem@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
-class PersianDate extends DateTime
+
+namespace Mtm\PersianDate;
+
+/**
+ * This class hold time and represents it in Persian Date format.
+ *
+ * @package Mtm\PersianDate
+ */
+class DateTime extends \DateTime
 {
     /**
      * Builds original PHP DateTime class.
      *
-     * @return DateTime
+     * @return \DateTime
      */
     public function getOriginalDateTime()
     {
@@ -25,12 +38,12 @@ class PersianDate extends DateTime
     {
 
 
-        $T_sec = 0;/* <= رفع خطاي زمان سرور ، با اعداد '+' و '-' بر حسب ثانيه */
+        $T_sec = 0;/* <= ??? ???? ???? ???? ? ?? ????? '+' ? '-' ?? ??? ????? */
 
         if ($this->getTimezone()->getName() != 'local') date_default_timezone_set(($this->getTimezone()->getName() == '') ? 'Asia/Tehran' : $this->getTimezone()->getName());
         $ts = $T_sec + (($this->getTimestamp() == '' or $this->getTimestamp() == 'now') ? time() : $this->getTimestamp());
         $date = explode('_', date('H_i_j_n_O_P_s_w_Y', $ts));
-        list($j_y, $j_m, $j_d) = DateConverter::gregorian_to_jalali($date[8], $date[3], $date[2]);
+        list($j_y, $j_m, $j_d) = Converter::gregorian_to_jalali($date[8], $date[3], $date[2]);
         $doy = ($j_m < 7) ? (($j_m - 1) * 31) + $j_d - 1 : (($j_m - 7) * 30) + $j_d + 185;
         $kab = ($j_y % 33 % 4 - 1 == (int)($j_y % 33 * .05)) ? 1 : 0;
         $sl = strlen($format);
@@ -55,11 +68,11 @@ class PersianDate extends DateTime
                     break;
 
                 case'a':
-                    $out .= ($date[0] < 12) ? 'ق.ظ' : 'ب.ظ';
+                    $out .= ($date[0] < 12) ? '?.?' : '?.?';
                     break;
 
                 case'A':
-                    $out .= ($date[0] < 12) ? 'قبل از ظهر' : 'بعد از ظهر';
+                    $out .= ($date[0] < 12) ? '??? ?? ???' : '??? ?? ???';
                     break;
 
                 case'b':
@@ -67,7 +80,7 @@ class PersianDate extends DateTime
                     break;
 
                 case'c':
-                    $out .= $j_y . '/' . $j_m . '/' . $j_d . ' ،' . $date[0] . ':' . $date[1] . ':' . $date[6] . ' ' . $date[5];
+                    $out .= $j_y . '/' . $j_m . '/' . $j_d . ' ?' . $date[0] . ':' . $date[1] . ':' . $date[6] . ' ' . $date[5];
                     break;
 
                 case'C':
@@ -167,7 +180,7 @@ class PersianDate extends DateTime
                 case'r':
                     $key = $this->persianWords(array('rh' => $date[7], 'mm' => $j_m));
                     $out .= $date[0] . ':' . $date[1] . ':' . $date[6] . ' ' . $date[4]
-                        . ' ' . $key['rh'] . '، ' . $j_d . ' ' . $key['mm'] . ' ' . $j_y;
+                        . ' ' . $key['rh'] . '? ' . $j_d . ' ' . $key['mm'] . ' ' . $j_y;
                     break;
 
                 case's':
@@ -175,7 +188,7 @@ class PersianDate extends DateTime
                     break;
 
                 case'S':
-                    $out .= 'ام';
+                    $out .= '??';
                     break;
 
                 case't':
@@ -236,7 +249,7 @@ class PersianDate extends DateTime
      */
     public function setDate($year, $month, $day)
     {
-        list($gy, $gm, $gd) = DateConverter::jalali_to_gregorian($year, $month, $day);
+        list($gy, $gm, $gd) = Converter::jalali_to_gregorian($year, $month, $day);
         parent::setDate($gy, $gm, $gd);
     }
 
@@ -252,61 +265,61 @@ class PersianDate extends DateTime
                     $h3 = $h34 = $h4 = '';
                     if ($xy3 == 1) {
                         $p34 = '';
-                        $k34 = array('ده', 'یازده', 'دوازده', 'سیزده', 'چهارده', 'پانزده', 'شانزده', 'هفده', 'هجده', 'نوزده');
+                        $k34 = array('??', '?????', '??????', '?????', '??????', '??????', '??????', '????', '????', '?????');
                         $h34 = $k34[substr($num, 2 - $sl, 2) - 10];
                     } else {
                         $xy4 = substr($num, 3 - $sl, 1);
-                        $p34 = ($xy3 == 0 or $xy4 == 0) ? '' : ' و ';
-                        $k3 = array('', '', 'بیست', 'سی', 'چهل', 'پنجاه', 'شصت', 'هفتاد', 'هشتاد', 'نود');
+                        $p34 = ($xy3 == 0 or $xy4 == 0) ? '' : ' ? ';
+                        $k3 = array('', '', '????', '??', '???', '?????', '???', '?????', '?????', '???');
                         $h3 = $k3[$xy3];
-                        $k4 = array('', 'یک', 'دو', 'سه', 'چهار', 'پنج', 'شش', 'هفت', 'هشت', 'نه');
+                        $k4 = array('', '??', '??', '??', '????', '???', '??', '???', '???', '??');
                         $h4 = $k4[$xy4];
                     }
                     $array[$type] = (($num > 99) ? str_ireplace(array('12', '13', '14', '19', '20')
-                                , array('هزار و دویست', 'هزار و سیصد', 'هزار و چهارصد', 'هزار و نهصد', 'دوهزار')
-                                , substr($num, 0, 2)) . ((substr($num, 2, 2) == '00') ? '' : ' و ') : '') . $h3 . $p34 . $h34 . $h4;
+                                , array('???? ? ?????', '???? ? ????', '???? ? ??????', '???? ? ????', '??????')
+                                , substr($num, 0, 2)) . ((substr($num, 2, 2) == '00') ? '' : ' ? ') : '') . $h3 . $p34 . $h34 . $h4;
                     break;
 
                 case'mm':
                     $key = array
-                    ('فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور', 'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند');
+                    ('???????', '????????', '?????', '???', '?????', '??????', '???', '????', '???', '??', '????', '?????');
                     $array[$type] = $key[$num - 1];
                     break;
 
                 case'rr':
-                    $key = array('یک', 'دو', 'سه', 'چهار', 'پنج', 'شش', 'هفت', 'هشت', 'نه', 'ده', 'یازده', 'دوازده', 'سیزده'
-                    , 'چهارده', 'پانزده', 'شانزده', 'هفده', 'هجده', 'نوزده', 'بیست', 'بیست و یک', 'بیست و دو', 'بیست و سه'
-                    , 'بیست و چهار', 'بیست و پنج', 'بیست و شش', 'بیست و هفت', 'بیست و هشت', 'بیست و نه', 'سی', 'سی و یک');
+                    $key = array('??', '??', '??', '????', '???', '??', '???', '???', '??', '??', '?????', '??????', '?????'
+                    , '??????', '??????', '??????', '????', '????', '?????', '????', '???? ? ??', '???? ? ??', '???? ? ??'
+                    , '???? ? ????', '???? ? ???', '???? ? ??', '???? ? ???', '???? ? ???', '???? ? ??', '??', '?? ? ??');
                     $array[$type] = $key[$num - 1];
                     break;
 
                 case'rh':
-                    $key = array('یکشنبه', 'دوشنبه', 'سه شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه', 'شنبه');
+                    $key = array('??????', '??????', '?? ????', '????????', '???????', '????', '????');
                     $array[$type] = $key[$num];
                     break;
 
                 case'sh':
-                    $key = array('مار', 'اسب', 'گوسفند', 'میمون', 'مرغ', 'سگ', 'خوک', 'موش', 'گاو', 'پلنگ', 'خرگوش', 'نهنگ');
+                    $key = array('???', '???', '??????', '?????', '???', '??', '???', '???', '???', '????', '?????', '????');
                     $array[$type] = $key[$num % 12];
                     break;
 
                 case'mb':
-                    $key = array('حمل', 'ثور', 'جوزا', 'سرطان', 'اسد', 'سنبله', 'میزان', 'عقرب', 'قوس', 'جدی', 'دلو', 'حوت');
+                    $key = array('???', '???', '????', '?????', '???', '?????', '?????', '????', '???', '???', '???', '???');
                     $array[$type] = $key[$num - 1];
                     break;
 
                 case'ff':
-                    $key = array('بهار', 'تابستان', 'پاییز', 'زمستان');
+                    $key = array('????', '???????', '?????', '??????');
                     $array[$type] = $key[(int)($num / 3.1)];
                     break;
 
                 case'km':
-                    $key = array('فر', 'ار', 'خر', 'تی‍', 'مر', 'شه‍', 'مه‍', 'آب‍', 'آذ', 'دی', 'به‍', 'اس‍');
+                    $key = array('??', '??', '??', '???', '??', '???', '???', '???', '??', '??', '???', '???');
                     $array[$type] = $key[$num - 1];
                     break;
 
                 case'kh':
-                    $key = array('ی', 'د', 'س', 'چ', 'پ', 'ج', 'ش');
+                    $key = array('?', '?', '?', '?', '?', '?', '?');
                     $array[$type] = $key[$num];
                     break;
 
