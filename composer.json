@@ -1,5 +1,5 @@
 {
-    "name": "mtm/persian_date",
+    "name": "mtm/persian-date",
     "description": "Persian date time to work with.",
     "license": "MIT",
     "authors": [
@@ -10,7 +10,7 @@
     ],
     "minimum-stability": "dev",
     "psr-4": {
-        "Mtm\\": "src/"
+        "Mtm\\PersianDate\\": "src/"
     }
     
 }
