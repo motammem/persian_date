@@ -1,10 +1,7 @@
 <?php
 
 /**
- * Created by PhpStorm.
- * User: Amin
- * Date: 8/14/2015
- * Time: 6:06 PM
+ * Class DateConverter.
  */
 class DateConverter
 {
