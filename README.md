@@ -34,7 +34,7 @@ $persian_year = 1370;
 $persian_month = 9;
 $persian_day = 19;
 
-$standardDateTime = $persianDateTime->setDate($persian_year, $persian_month, $persian_day);
+$persianDateTime->setDate($persian_year, $persian_month, $persian_day);
 ```
 
 ### Formats
@@ -42,9 +42,9 @@ And finally when you want to print in various formats:
 
 
 ```php
-$standardDateTime->format("Y-m-d"); // prints: 1370-9-19
+$persianDateTime->format("Y-m-d"); // prints: 1370-9-19
 
-$standardDateTime->format("f y"); // prints: پاییز 94
+$persianDateTime->format("f y"); // prints: پاییز 94
 ```
 
 <table>
