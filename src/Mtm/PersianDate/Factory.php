@@ -48,10 +48,10 @@ class Factory
     /**
      * Bulid PersianDateTime instance from original PHP DateTime object.
      *
-     * @param DateTime $dateTime
+     * @param \DateTime $dateTime
      * @return DateTime
      */
-    static function buildFromOriginalDateTime(DateTime $dateTime)
+    static function buildFromOriginalDateTime(\DateTime $dateTime)
     {
         $object = new DateTime();
         $object->setTimezone($dateTime->getTimezone());
