@@ -1,4 +1,4 @@
-This library provides an easy to use Object Oriented interface to work with persian date and time.
+This library provides an easy to use Object Oriented API to work with persian date and time.
 
 This library using `http://jdf.scr.ir/` library in background.
 
