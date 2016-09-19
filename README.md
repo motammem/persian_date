@@ -1,6 +1,10 @@
 # Persian Date (Object Oriented API)
 ---
+[![Stable release](https://poser.pugx.org/mtm/persian-date/version.svg)](https://packagist.org/packages/mtm/persian-date)
+[![Total Downloads](https://poser.pugx.org/mtm/persian-date/downloads)](https://packagist.org/packages/mtm/persian-date)
+[![License](https://poser.pugx.org/mtm/persian-date/license)](https://packagist.org/packages/mtm/persian-date)
 [![Build Status](https://travis-ci.org/motammem/persian_date.svg?branch=master)](https://travis-ci.org/motammem/persian_date)
+
 
 This library provides an easy to use Object Oriented API to work with persian date and time.
 
