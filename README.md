@@ -11,7 +11,7 @@ This library using `http://jdf.scr.ir/` library in background.
 Open your terminal and type:
 
 ```php
-composer require mtm/persian-date:v1.0.2
+composer require mtm/persian-date
 ```
 
 ###Usage:
