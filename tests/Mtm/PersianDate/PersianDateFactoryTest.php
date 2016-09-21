@@ -1,13 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Amin
- * Date: 9/21/2016
- * Time: 10:50 PM
+
+/*
+ * This file is part of the Persian Date (Object Oriented API) package.
+ *
+ * (c) Amin Alizade <motammem@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
-namespace Mtm\PersianDate;
+namespace Tests\Mtm\PersianDate;
 
+
+use Mtm\PersianDate\PersianDateFactory;
 
 class PersianDateFactoryTest extends \PHPUnit_Framework_TestCase
 {

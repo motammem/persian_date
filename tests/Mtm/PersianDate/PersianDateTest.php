@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Mtm packages.
+ * This file is part of the Persian Date (Object Oriented API) package.
  *
  * (c) Amin Alizade <motammem@gmail.com>
  *
@@ -9,8 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Mtm\PersianDate;
+namespace Tests\Mtm\PersianDate;
 
+
+use Mtm\PersianDate\PersianDate;
 
 class PersianDateTest extends \PHPUnit_Framework_TestCase
 {

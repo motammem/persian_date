@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the Mtm packages.
+ * This file is part of the Persian Date (Object Oriented API) package.
  *
  * (c) Amin Alizade <motammem@gmail.com>
  *
