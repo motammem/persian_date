@@ -6,13 +6,12 @@
 [![Build Status](https://travis-ci.org/motammem/persian_date.svg?branch=master)](https://travis-ci.org/motammem/persian_date)
 
 
-This library provides an easy to use Object Oriented API to work with persian date and time.
+This project provides an easy to use Object Oriented API to work with persian date and time.
 
-This library using `http://jdf.scr.ir/` library in background.
-
+Provided `PersianDate` class extends Standard PHP `DateTime` class and has it's all capabilities.
 
 ###Installation:
-Open your terminal and type:
+Open your terminal and enter:
 
 ```php
 composer require mtm/persian-date
@@ -20,23 +19,29 @@ composer require mtm/persian-date
 
 ###Usage:
 
-When you want build a Persian DateTime instance from exact date:
+When you want build a PersianDate instance:
 ```php
-$persianDateTime = Mtm\PersianDate\Factory::buildFromExactDate(null, null, null, 9, 19 ,1370);
+$persianDateTime = new Mtm\PersianDate\PersianDate();
 ```
 
-When you want to build Persian DateTime instance from standard PHP Standard DateTime object:
+
+When you want build a PersianDate instance from exact date:
+```php
+$persianDateTime = Mtm\PersianDate\PersianDateFactory::buildFromExactDate(null, null, null, 9, 19 ,1370);
+```
+
+When you want to convert PHP Standard Datetime to  PersianDate instance from standard PHP Standard DateTime object:
 ```php
 $standardDateTime = new \DateTime();
-$persianDateTime = Mtm\PersianDate\Factory::buildFromOriginalDateTime($standardDateTime);
+$persianDateTime = Mtm\PersianDate\PersianDateFactory::buildFromOriginalDateTime($standardDateTime);
 ```
 
-When you want to convert Persian DateTime instance to PHP Standard DateTime object:
+When you want to convert PersianDate instance to PHP Standard DateTime object:
 ```php
 $standardDateTime = $persianDateTime->getOriginalDateTime();
 ```
 
-When you want to set date on Persian DateTime
+When you want to set date on PersianDate instance
 ```php
 $persian_year = 1370;
 $persian_month = 9;
