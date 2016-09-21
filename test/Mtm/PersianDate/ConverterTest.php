@@ -24,7 +24,7 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
         $gregorian_month = 12;
         $gregorian_day = 10;
 
-        $array = Converter::gregorian_to_jalali($gregorian_year, $gregorian_month, $gregorian_day);
+        $array = PersianDateConverter::gregorian_to_jalali($gregorian_year, $gregorian_month, $gregorian_day);
 
         $this->assertSame(array(
             $persian_year,
@@ -44,7 +44,7 @@ class ConverterTest extends \PHPUnit_Framework_TestCase
         $gregorian_month = 12;
         $gregorian_day = 10;
 
-        $array = Converter::jalali_to_gregorian($persian_year, $persian_month, $persian_day);
+        $array = PersianDateConverter::jalali_to_gregorian($persian_year, $persian_month, $persian_day);
 
         $this->assertSame(array(
             $gregorian_year,

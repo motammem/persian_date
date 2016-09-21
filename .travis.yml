@@ -3,4 +3,5 @@ php:
   - '5.6'
 install:
   - 'composer dump-autoload'
-  - 'composer install'
+  - 'composer install --dev'
+  - 'vendor/bin/phpunit'

@@ -16,7 +16,7 @@ namespace Mtm\PersianDate;
  *
  * @package Mtm\PersianDate
  */
-class DateTime extends \DateTime
+class PersianDate extends \DateTime
 {
     /**
      * Builds original PHP DateTime class.
@@ -43,7 +43,7 @@ class DateTime extends \DateTime
         if ($this->getTimezone()->getName() != 'local') date_default_timezone_set(($this->getTimezone()->getName() == '') ? 'Asia/Tehran' : $this->getTimezone()->getName());
         $ts = $T_sec + (($this->getTimestamp() == '' or $this->getTimestamp() == 'now') ? time() : $this->getTimestamp());
         $date = explode('_', date('H_i_j_n_O_P_s_w_Y', $ts));
-        list($j_y, $j_m, $j_d) = Converter::gregorian_to_jalali($date[8], $date[3], $date[2]);
+        list($j_y, $j_m, $j_d) = PersianDateConverter::gregorian_to_jalali($date[8], $date[3], $date[2]);
         $doy = ($j_m < 7) ? (($j_m - 1) * 31) + $j_d - 1 : (($j_m - 7) * 30) + $j_d + 185;
         $kab = ($j_y % 33 % 4 - 1 == (int)($j_y % 33 * .05)) ? 1 : 0;
         $sl = strlen($format);
@@ -246,7 +246,7 @@ class DateTime extends \DateTime
      */
     public function setDate($year, $month, $day)
     {
-        list($gy, $gm, $gd) = Converter::jalali_to_gregorian($year, $month, $day);
+        list($gy, $gm, $gd) = PersianDateConverter::jalali_to_gregorian($year, $month, $day);
         parent::setDate($gy, $gm, $gd);
     }
 

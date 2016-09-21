@@ -461,22 +461,6 @@ $persianDateTime->format("f y"); // prints: پاییز 94
 
 <tr>
 
-<td>!</td>
-
-<td>منتظر باشید</td>
-
-<td>منتظر باشید</td>
-
-<td>به زودی</td>
-
-<td>" در دست ساخت "</td>
-
-<td>x</td>
-
-</tr>
-
-<tr>
-
 <td>+</td>
 
 <td>۸۹</td>
@@ -584,22 +568,6 @@ $persianDateTime->format("f y"); // prints: پاییز 94
 <td>حرف اوّل نام روز هفته، ش=شنبه</td>
 
 <td>D</td>
-
-</tr>
-
-<tr>
-
-<td>!</td>
-
-<td>منتظر باشید</td>
-
-<td>منتظر باشید</td>
-
-<td>به زودی</td>
-
-<td>" در دست ساخت "</td>
-
-<td>E</td>
 
 </tr>
 
@@ -797,22 +765,6 @@ $persianDateTime->format("f y"); // prints: پاییز 94
 
 <tr>
 
-<td>!</td>
-
-<td>منتظر باشید</td>
-
-<td>منتظر باشید</td>
-
-<td>به زودی</td>
-
-<td>" در دست ساخت "</td>
-
-<td>R</td>
-
-</tr>
-
-<tr>
-
 <td>+</td>
 
 <td>ام</td>
@@ -888,22 +840,6 @@ $persianDateTime->format("f y"); // prints: پاییز 94
 <td>شماره ی این هفته در سال - ۲رقم</td>
 
 <td>W</td>
-
-</tr>
-
-<tr>
-
-<td>!</td>
-
-<td>منتظر باشید</td>
-
-<td>منتظر باشید</td>
-
-<td>به زودی</td>
-
-<td>" در دست ساخت "</td>
-
-<td>X</td>
 
 </tr>
 

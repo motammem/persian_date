@@ -17,7 +17,7 @@ namespace Mtm\PersianDate;
  *
  * @package Mtm\PersianDate
  */
-class Converter
+class PersianDateConverter
 {
     /**
      * Convert Gregorian date parameters to Persian.
