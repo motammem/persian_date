@@ -33,6 +33,7 @@ class PersianDate extends \DateTime
 
     /**
      * @inheritDoc
+     * @see https://github.com/motammem/persian_date#format
      */
     public function format($format)
     {
